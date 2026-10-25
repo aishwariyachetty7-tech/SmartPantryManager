@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         fabAdd.setOnClickListener(v -> {
-            Toast.makeText(this, "Add screen coming next!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(MainActivity.this, AddItemActivity.class));
         });
     }
 
@@ -56,7 +57,13 @@ public class MainActivity extends AppCompatActivity {
         adapter = new PantryAdapter(cursor, new PantryAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int id, String name, double qty, String unit, String expiry) {
-                Toast.makeText(MainActivity.this, "Edit " + name + " (coming soon)", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
+                intent.putExtra("id", id);
+                intent.putExtra("name", name);
+                intent.putExtra("quantity", qty);
+                intent.putExtra("unit", unit);
+                intent.putExtra("expiry", expiry);
+                startActivity(intent);
             }
 
             @Override
