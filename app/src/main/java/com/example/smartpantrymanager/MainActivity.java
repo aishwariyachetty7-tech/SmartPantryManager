@@ -1,7 +1,10 @@
 package com.example.smartpantrymanager;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -9,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import android.content.Intent;
+import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = findViewById(R.id.myToolbar);
+        setSupportActionBar(toolbar);
 
         dbHelper = new DatabaseHelper(this);
         recyclerView = findViewById(R.id.recyclerView);
@@ -44,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
     private void loadPantryData() {
         Cursor cursor = dbHelper.getAllPantryItems();
 
-        // Shows an empty state if no items exist
         if (cursor.getCount() == 0) {
             tvEmptyState.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
@@ -53,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setVisibility(View.VISIBLE);
         }
 
-        // Sets up the adapter with click listeners
         adapter = new PantryAdapter(cursor, new PantryAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int id, String name, double qty, String unit, String expiry) {
@@ -69,11 +73,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemLongClick(int id) {
                 dbHelper.deletePantryItem(id);
-                loadPantryData(); // Refreshes the list
+                loadPantryData();
                 Toast.makeText(MainActivity.this, "Item deleted", Toast.LENGTH_SHORT).show();
             }
         });
 
         recyclerView.setAdapter(adapter);
+    }
+
+    // Creates the "Suggested Recipes" text in the top right
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    // Handles the click event when you tap it
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_recipes) {
+            startActivity(new Intent(MainActivity.this, SuggestedRecipesActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

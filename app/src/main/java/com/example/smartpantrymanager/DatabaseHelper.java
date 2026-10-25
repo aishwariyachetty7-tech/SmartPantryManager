@@ -278,4 +278,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
     }
+
+    // Getting full recipe details for the IDs that passed the strict match
+    public Cursor getRecipesByIds(List<Integer> ids) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (ids.isEmpty()) {
+            return db.rawQuery("SELECT * FROM " + TABLE_RECIPES + " WHERE 1=0", null);
+        }
+
+        StringBuilder placeholders = new StringBuilder();
+        for (int i = 0; i < ids.size(); i++) {
+            placeholders.append(i == 0 ? "?" : ",?");
+        }
+
+        String[] args = new String[ids.size()];
+        for (int i = 0; i < ids.size(); i++) {
+            args[i] = String.valueOf(ids.get(i));
+        }
+
+        String query = "SELECT * FROM " + TABLE_RECIPES + " WHERE id IN (" + placeholders.toString() + ")";
+        return db.rawQuery(query, args);
+    }
 }

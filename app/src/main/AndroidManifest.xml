@@ -24,6 +24,8 @@
 
         <activity android:name=".AddItemActivity" />
 
+        <activity android:name=".SuggestedRecipesActivity" />
+
     </application>
 
 </manifest>
