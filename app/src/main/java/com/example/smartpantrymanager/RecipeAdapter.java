@@ -13,10 +13,17 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     private Cursor cursor;
     private Context context;
+    private OnRecipeClickListener listener;
 
-    public RecipeAdapter(Context context, Cursor cursor) {
+    // Interface to handle clicks
+    public interface OnRecipeClickListener {
+        void onRecipeClick(int recipeId);
+    }
+
+    public RecipeAdapter(Context context, Cursor cursor, OnRecipeClickListener listener) {
         this.context = context;
         this.cursor = cursor;
+        this.listener = listener;
     }
 
     @NonNull
@@ -29,8 +36,16 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     @Override
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
         if (cursor.moveToPosition(position)) {
+            int recipeId = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
             String recipeName = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             holder.textView.setText(recipeName);
+
+            // Handle Click
+            holder.itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onRecipeClick(recipeId);
+                }
+            });
         }
     }
 

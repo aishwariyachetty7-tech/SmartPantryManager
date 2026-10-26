@@ -1,5 +1,6 @@
 package com.example.smartpantrymanager;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -24,17 +25,23 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
 
         rvRecipes.setLayoutManager(new LinearLayoutManager(this));
 
-        // Run the strict-matching logic to get a list of valid recipe IDs
+        // Run strict-matching logic
         List<Integer> validRecipeIds = dbHelper.getSuggestedRecipeIds();
 
         if (validRecipeIds.isEmpty()) {
-            // Show an empty state if nothing matches
+            // Shows empty state if nothing matches
             rvRecipes.setVisibility(View.GONE);
             tvNoRecipes.setVisibility(View.VISIBLE);
         } else {
-            // Fetch the full details for those IDs
             Cursor cursor = dbHelper.getRecipesByIds(validRecipeIds);
-            RecipeAdapter adapter = new RecipeAdapter(this, cursor);
+
+            // Sets up adapter and opens detail screen on click
+            RecipeAdapter adapter = new RecipeAdapter(this, cursor, recipeId -> {
+                Intent intent = new Intent(SuggestedRecipesActivity.this, RecipeDetailActivity.class);
+                intent.putExtra("recipe_id", recipeId);
+                startActivity(intent);
+            });
+
             rvRecipes.setAdapter(adapter);
         }
     }
