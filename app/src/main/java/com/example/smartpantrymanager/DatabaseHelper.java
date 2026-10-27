@@ -214,51 +214,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // SEED 15 RECIPES
     private void seedRecipes(SQLiteDatabase db) {
-        // Recipe 1
-        addSeedRecipe(db, "Oats Porridge", "1. Cook oats with milk in a pot. 2.  Wait for it to soften/get mush. 3. Add some honey and cinnamon.",
+        // Recipe 1 - Oats Porridge
+        addSeedRecipe(db, "Oats Porridge", "1. Cook oats with milk in a pot. 2.  Wait for it to soften/get mush. 3. Drizzle some honey and sprinkle some cinnamon.",
                 new String[]{"oats", "milk", "honey", "cinnamon"}, new double[]{30, 0.5, 1, 1}, new String[]{"g", "cup", "tbsp", "tsp"});
-        // Recipe 2
+        // Recipe 2 - Scrammbled Eggs
         addSeedRecipe(db, "Scrambled Eggs", "1. Beat eggs. 2. Fry in pan with butter.",
-                new String[]{"egg", "butter"}, new double[]{2, 10}, new String[]{"pc", "g"});
-        // Recipe 3
-        addSeedRecipe(db, "Cheese Sandwich", "1. Put cheese between bread. 2. Toast.",
-                new String[]{"bread", "cheese"}, new double[]{2, 1}, new String[]{"slice", "slice"});
-        // Recipe 4
-        addSeedRecipe(db, "Chicken Salad", "1. Cook chicken. 2. Chop lettuce. 3. Mix.",
-                new String[]{"chicken", "lettuce", "oil"}, new double[]{200, 1, 1}, new String[]{"g", "head", "tbsp"});
-        // Recipe 5
-        addSeedRecipe(db, "Pancakes", "1. Mix flour, milk, egg. 2. Fry.",
-                new String[]{"flour", "milk", "egg"}, new double[]{100, 200, 1}, new String[]{"g", "ml", "pc"});
-        // Recipe 6
-        addSeedRecipe(db, "Buttered Toast", "1. Toast bread. 2. Add butter.",
-                new String[]{"bread", "butter"}, new double[]{1, 5}, new String[]{"slice", "g"});
-        // Recipe 7
-        addSeedRecipe(db, "Rice and Beans", "1. Boil rice. 2. Heat beans. 3. Mix.",
-                new String[]{"rice", "beans"}, new double[]{100, 100}, new String[]{"g", "g"});
-        // Recipe 8
-        addSeedRecipe(db, "Beef Stir Fry", "1. Cut beef. 2. Fry with veggies.",
-                new String[]{"beef", "oil", "onion"}, new double[]{150, 1, 1}, new String[]{"g", "tbsp", "pc"});
-        // Recipe 9
-        addSeedRecipe(db, "Potato Soup", "1. Boil potatoes. 2. Blend with milk.",
-                new String[]{"potato", "milk", "butter"}, new double[]{3, 100, 10}, new String[]{"pc", "ml", "g"});
-        // Recipe 10
-        addSeedRecipe(db, "Fruit Salad", "1. Chop apples and bananas. 2. Mix.",
-                new String[]{"apple", "banana"}, new double[]{1, 1}, new String[]{"pc", "pc"});
-        // Recipe 11
-        addSeedRecipe(db, "Mac and Cheese", "1. Boil pasta. 2. Melt cheese with milk.",
-                new String[]{"pasta", "cheese", "milk"}, new double[]{100, 2, 50}, new String[]{"g", "slice", "ml"});
-        // Recipe 12
-        addSeedRecipe(db, "Omelette", "1. Beat eggs. 2. Fry with onions.",
-                new String[]{"egg", "onion", "oil"}, new double[]{3, 1, 1}, new String[]{"pc", "pc", "tbsp"});
-        // Recipe 13
-        addSeedRecipe(db, "Garlic Bread", "1. Mix butter and garlic. 2. Spread on bread and bake.",
-                new String[]{"bread", "butter", "garlic"}, new double[]{2, 20, 1}, new String[]{"slice", "g", "clove"});
-        // Recipe 14
-        addSeedRecipe(db, "Tomato Soup", "1. Boil tomatoes. 2. Blend.",
-                new String[]{"tomato", "onion", "oil"}, new double[]{4, 1, 1}, new String[]{"pc", "pc", "tbsp"});
-        // Recipe 15
-        addSeedRecipe(db, "Apple Snack", "1. Slice apple.",
-                new String[]{"apple"}, new double[]{1}, new String[]{"pc"});
+                new String[]{"egg", "salt", "butter"}, new double[]{2, 1, 10}, new String[]{"pc", "tsp", "g"});
+        // Recipe 3 - Cheese Sandwich
+        addSeedRecipe(db, "Cheese Sandwich", "1. Butter bread. 2. Put cheese on one slice of the bread. 3. Place the other slice on top.",
+                new String[]{"bread", "butter", "cheese"}, new double[]{2, 1, 2}, new String[]{"slice", "tsp", "slice"});
+        // Recipe 4 - Two Minute Noodles
+        addSeedRecipe(db, "Two Minute Noodles", "1. Boil water in the kettle and then put it into the pot. 2. Place noodles from packet into the pot. 3. Once softened, add in the flavoring from the packet. 4. Mix well.",
+                new String[]{"water", "noodles"}, new double[]{250, 1}, new String[]{"ml", "packet"});
+        // Recipe 5 - Pancakes
+        addSeedRecipe(db, "Pancakes", "1. Mix the flour, sugar, milk, egg and vanilla essence until all is incorporated. 2. Using a ladel, place a spoonful of the mixture into the pan. 3. Swirl the batter around the pan and flip it once bubbles form.",
+                new String[]{"flour", "sugar", "milk", "egg", "vanilla essence"}, new double[]{1, 2, 200, 1, 1}, new String[]{"cup", "tbsp", "ml", "pc", "tsp"});
+        // Recipe 6 - Buttered Toast with Jam
+        addSeedRecipe(db, "Buttered Toast with Jam", "1. Toast bread in the toaster. 2. Spread butter on toast. 3. Add some jam of your choice (preferably strawberry or raspberry) onto the toast as well.",
+                new String[]{"bread", "butter", "jam"}, new double[]{1, 5, 1}, new String[]{"slice", "g", "tsp"});
+        // Recipe 7 - Baked Beans Salad
+        addSeedRecipe(db, "Baked Beans Salad", "1. On a chopping board, chop some onions and chillies. 2. Empty the can of baked beans into a bowl. 3. Add the chopped onions and chillies. 4. Add some salt to taste.",
+                new String[]{"beans", "onions"}, new double[]{400, 0.25, 1, 1.5}, new String[]{"g", "cup", "pc", "tsp"});
+        // Recipe 8 - Stir Fried Chicken
+        addSeedRecipe(db, "Stir Fried Chicken", "1. Cut chicken into small cubes. 2. Marinate with some salt, pepper and mixed herbs. 3. Fry the chicken in a pan with some oil, soy sauce and chopped onions.",
+                new String[]{"chicken", "salt", "pepper", "oil", "soy sauce", "onion"}, new double[]{150, 2, 1, 1, 2, 1}, new String[]{"g", "tsp", "tsp", "tbsp", "tbsp", "pc"});
+        // Recipe 9 - Butternut Soup
+        addSeedRecipe(db, "Butternut Soup", "1. Chop butternut into smaller pieces. 2. Roast the butternut with garlic and butter. 3. Blend the butternut with milk and a dash of cream. 4. Add salt and freshly ground pepper.",
+                new String[]{"butternut", "milk", "butter", "cream", "salt", "pepper"}, new double[]{3, 250, 10, 10, 3, 2}, new String[]{"pc", "ml", "g", "ml", "tsp", "tsp"});
+        // Recipe 10 - Fruit Salad
+        addSeedRecipe(db, "Fruit Salad", "1. Chop the fruit - preferably apples, bananas and oranges. 2. Add some honey. 3. Mix well.",
+                new String[]{"apple", "banana", "orange", "honey"}, new double[]{1, 2, 1, 1}, new String[]{"pc", "pc", "tsp"});
+        // Recipe 11 - Mac 'n Cheese
+        addSeedRecipe(db, "Mac 'n Cheese", "1. Boil pasta (preferably macaroni). 2. In a pot add butter, pepper and milk. 3. Whisk until it reaches a boil, then add the grated cheese. 4. Whisk until it thickens. 5. Add the drained pasta to the sauce and mix well.",
+                new String[]{"pasta", "cheese", "butter", "pepper", "milk"}, new double[]{100, 2, 50, 2, 50}, new String[]{"g", "slice", "g", "tsp", "ml"});
+        // Recipe 12 - Bread Pudding
+        addSeedRecipe(db, "Bread Pudding", "1. Chop bread into smaller pieces. 2. Melt butter and add to the bread, until all the bread is soaked. 3. Place into an oven-safe dish. 4. In a bowl whisk egg, milk, sugar and vanilla essence until combined. 5. Pour this mixture over the butter-soaked bread. 6. Bake in the oven until firm and golden brown.",
+                new String[]{"bread", "butter", "egg", "milk", "sugar", "vanilla essence"}, new double[]{10, 5, 1, 250, 4, 3}, new String[]{"slices", "tbsp", "pc", "ml", "tbsp", "tsp"});
+        // Recipe 13 - Cheesy Garlic Bread
+        addSeedRecipe(db, "Cheesy Garlic Bread", "1. Mix softened butter and crushed garlic. 2. Spread it onto your preferred bread/roll. 3. Sprinkle some cheese on top and bake until the cheese is melted.",
+                new String[]{"bread", "butter", "garlic", "cheese"}, new double[]{2, 20, 1, 5}, new String[]{"slice", "g", "tsp", "g"});
+        // Recipe 14 - Creamed-Style Corn Toasties
+        addSeedRecipe(db, "Creamed-Style Corn Toasties", "1. Toast your bread until crispy. 2. Chop onions. 3. In a bowl empty the can of pre-cooked cream-style corn and add the onions. 4. Place 3 spoons of the mixture onto the toast.",
+                new String[]{"cream style corn", "bread", "onion"}, new double[]{400, 6, 0.5}, new String[]{"g", "slices", "pc"});
+        // Recipe 15 - Peanut Butter and Jam Sandwich
+        addSeedRecipe(db, "Peanut Butter and Jam Sandwich", "1. Spread peanut butter onto one slice of bread. 2. Spread jam onto the other slice of bread. 3. Put the 2 slices together and cut in half.",
+                new String[]{"bread", "peanut butter", "jam"}, new double[]{2, 1, 1}, new String[]{"slice", "tbsp", "tbsp"});
     }
 
     private void addSeedRecipe(SQLiteDatabase db, String name, String steps, String[] ingNames, double[] ingQtys, String[] ingUnits) {
