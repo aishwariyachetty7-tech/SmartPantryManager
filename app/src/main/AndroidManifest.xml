@@ -24,7 +24,6 @@
 
         <activity android:name=".AddItemActivity" />
         <activity android:name=".SuggestedRecipesActivity" />
-
         <activity android:name=".RecipeDetailActivity" />
         <activity android:name=".SettingsActivity" />
 
