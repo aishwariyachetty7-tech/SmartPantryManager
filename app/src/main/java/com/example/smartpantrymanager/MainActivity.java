@@ -88,11 +88,14 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    // Handles the click event when you tap it
+    // This handles what happens when you click a menu item
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_recipes) {
             startActivity(new Intent(MainActivity.this, SuggestedRecipesActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.action_settings) {
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

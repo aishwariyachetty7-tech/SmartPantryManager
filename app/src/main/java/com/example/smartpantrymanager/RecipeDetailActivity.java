@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import android.view.MenuItem;
 
 public class RecipeDetailActivity extends AppCompatActivity {
 
@@ -14,6 +15,11 @@ public class RecipeDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_detail);
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbarRecipe);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         dbHelper = new DatabaseHelper(this);
 
@@ -53,5 +59,14 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
             tvIngredients.setText(ingredientsText.toString());
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
